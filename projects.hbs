@@ -1,0 +1,35 @@
+{{!< default}}
+
+{{!-- Page Hero --}}
+{{#page}}
+  {{> post-hero 
+    image_style="hidden"
+  }}
+{{else}}
+  <div class="hero__content flex flex-col flex-cc m-t-lg m-b-lg">
+    <h1 class="hero__title text-center">{{t "Projects"}}</h1>
+  </div>
+{{/page}}
+
+{{#if posts}}
+  <div class="container wrapper">
+    {{!-- Projects --}}
+    <div class="grid project-feed" data-colors="{{@custom.project_card_color}}" data-layout="{{@custom.project_feed_layout}}" data-count="{{@custom.max_project_count}}">
+      {{#foreach posts}}
+        {{> project-card}}
+      {{/foreach}}
+    </div>
+
+    {{!-- Pagination --}}
+    <div class="flex flex-cc m-t-xl m-b-lg">
+      {{pagination}}
+    </div>
+
+    {{!-- Load more button --}}
+    {{!-- <div class="col-xs-12 center-xs m-t-lg m-b-lg">
+      <button class="btn btn--wide btn--shadow btn--filled js-load-more">
+        {{t "Load more posts"}}
+      </button>
+    </div> --}}
+  </div>
+{{/if}}
